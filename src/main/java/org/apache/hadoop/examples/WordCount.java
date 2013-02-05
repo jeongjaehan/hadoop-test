@@ -78,7 +78,20 @@ public class WordCount {
 				this.word.set(itr.nextToken());
 				context.write(this.word, one);
 			}
-			// log.info(++cnt);
+			
+		}
+		
+		public void cleanup(Context context) {
+			try {
+				log.info("================================= context info =======================================");
+				log.info("getJar:"+context.getJar());
+				log.info("getNumReduceTasks:"+context.getNumReduceTasks());
+				log.info("getJobName:"+context.getJobName());
+				log.info("toString :"+context.toString());
+				log.info("getCurrentValue : "+context.getCurrentValue());
+			} catch (Exception e) {
+				log.error(e,e);
+			}
 		}
 	}
 }
